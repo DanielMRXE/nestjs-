@@ -1,15 +1,14 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { LibrosController } from './libros/libros.controller';
-import { ItemsModule } from './items/items.module';
-import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+import { BookmarkModule } from './bookmark/bookmark.module';
+import { AuthService } from './auth/auth.service';
+import { AuthController } from './auth/auth.controller';
+
 
 @Module({
-  imports: [
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/'),
-    ItemsModule],
-  controllers: [AppController, LibrosController],
-  providers: [AppService],
+controllers: [AuthController],
+providers: [AuthService],
+
 })
 export class AppModule {}
