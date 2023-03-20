@@ -1,14 +1,15 @@
+import { QuizModule } from './modules/quiz/quiz.module';
 import { Module } from '@nestjs/common';
-import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
-import { BookmarkModule } from './bookmark/bookmark.module';
-import { AuthService } from './auth/auth.service';
-import { AuthController } from './auth/auth.controller';
-
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import {TypeOrmModule} from '@nestjs/typeorm';
+import { typeormConfig } from './config/typeorm.config';
 
 @Module({
-controllers: [AuthController],
-providers: [AuthService],
+imports: [QuizModule, TypeOrmModule.forRoot(typeormConfig)],
+controllers: [AppController],
+providers: [AppService],
+
 
 })
-export class AppModule {}
+export class AppModule {}   
